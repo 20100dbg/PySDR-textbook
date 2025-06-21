@@ -12,7 +12,7 @@ L'une des conséquences indirectes les plus intéressantes de l'apprentissage du
    :align: center
    
 
-À la fin de ce chapitre, vous comprendrez ce que signifie réellement le domaine fréquentiel, comment basculer entre le domaine temporel et fréquentiel (et ce qui se passe lorsque nous le faisons), ainsi que certains principes intéressants que nous utiliserons tout au long de nos études de DSP et de SDR (*Software-Defined Radio* en anglaie pour *radio logicielle* en français). À la fin de ce manuel, vous deviendrez un maître dans l'art de manipuler un signal dans le domaine fréquentiel, c'est garanti!
+À la fin de ce chapitre, vous comprendrez ce que signifie réellement le domaine fréquentiel, comment basculer entre le domaine temporel et fréquentiel (et ce qui se passe lorsque nous le faisons), ainsi que certains principes intéressants que nous utiliserons tout au long de nos études de DSP et de SDR (*Software-Defined Radio* en anglais pour *radio logicielle* en français). À la fin de ce manuel, vous deviendrez un maître dans l'art de manipuler un signal dans le domaine fréquentiel, c'est garanti!
 
 
 Tout d'abord, pourquoi aimons-nous regarder les signaux dans le domaine des fréquences?  Voici deux exemples de signaux, présentés à la fois dans le domaine temporel et dans le domaine fréquentiel:
@@ -140,8 +140,6 @@ Ce n'est pas grave si aucune de ces équations ne vous intéresse. En fait, nous
 Propriétés temps-fréquence
 ***************************
 
-Earlier we examined examples of how signals appear in the time domain and the frequency domain.  Now, we will cover five important "Fourier properties".  These are properties that tell us if we do ____ to our time domain signal, then ____ happens to our frequency domain signal.  It will give us an important insight into the type of Digital Signal Processing (DSP) we will perform on time domain signals in practice.
-
 Nous avons examiné précédemment des exemples de la manière dont les signaux apparaissent dans le domaine temporel et dans le domaine fréquentiel. Nous allons maintenant aborder cinq importantes "propriétés de Fourier".  Il s'agit de propriétés qui nous disent que si nous appliquons ____ à notre signal dans le domaine temporel, alors ____ s'appliquera à notre signal dans le domaine fréquentiel. Cela nous donnera un aperçu important du type de traitement numérique du signal (DSP) que nous effectuerons sur les signaux du domaine temporel dans la pratique.
 
 1. Propriété de linéarité:
@@ -151,7 +149,7 @@ Nous avons examiné précédemment des exemples de la manière dont les signaux 
 
 Cette propriété est probablement la plus facile à comprendre.  Si nous additionnons deux signaux dans le temps, la version dans le domaine des fréquences sera également la somme de la représentation fréquentielle des deux signaux.  Elle nous indique également que si nous multiplions l'un ou l'autre par une constante, l'équivalent fréquentiel sera également multiplié par la même quantité. L'utilité de cette propriété deviendra plus évidente lorsque nous additionnerons plusieurs signaux à la fois.
 
-1. Propriété du décalage de fréquence:
+2. Propriété du décalage de fréquence:
 
 .. math::
    e^{2 \pi j f_0 t}x(t) \leftrightarrow X(f-f_0)
@@ -168,7 +166,7 @@ Le décalage de fréquence fait partie intégrante du DSP parce que nous voulons
    :align: center
    :target: ../_images/freq-shift-diagram.svg
    
-1. Propriété du changement d'échelle dans le temps:
+3. Propriété du changement d'échelle dans le temps:
 
 .. math::
    x(at) \leftrightarrow X\left(\frac{f}{a}\right)
@@ -183,7 +181,7 @@ Le changement d'échelle dans le temps a pour effet de rétrécir ou d'étendre 
 
 Les personnes déjà familiarisées avec cette propriété remarqueront peut-être l'absence d'une constante multiplicative, qui a été laissé de côté pour des raisons de simplicité. En pratique, cela ne fait pas de différence.
 
-1. Propriété de la convolution dans le temps:
+4. Propriété de la convolution dans le temps:
 
 .. math::
    \int x(\tau) y(t-\tau) d\tau  \leftrightarrow X(f)Y(f)
@@ -210,7 +208,7 @@ Nous effectuons généralement des opérations de traitement numérique des sign
    
 Lorsque nous aborderons le filtrage, la propriété de convolution prendra tout son sens.
 
-1. Convolution en propriété de fréquence:
+5. Convolution en propriété de fréquence:
 
 Enfin, je tiens à souligner que la propriété de convolution fonctionne en sens inverse, même si nous ne l'utiliserons pas autant que la convolution dans le domaine temporel :
 
@@ -226,7 +224,7 @@ Transformée de Fourier rapide (FFT)
 
 Revenons maintenant à la Transformée de Fourier. Je vous ai montré l'équation de la transformée de Fourier discrète, mais ce que vous utiliserez en codant 99,9% du temps sera la fonction *fft()*. La transformée de Fourier rapide (FFT pour *Fast Fourier Transform*) est simplement un algorithme permettant de calculer la transformée de Fourier discrète. Il a été développé il y a plusieurs dizaines d'années, et même s'il existe plusieurs variations dans son implémentation, il reste le principal algorithme de calcul de la transformée de Fourier discrète. Une chance pour nous, vu qu'ils ont utilisé le mot "rapide" dans le nom.
 
-La FFT est donc une fonction avec une seul entrée et une seul sortie. Elle convertit un signal temporel en sa représentation fréquentielle: 
+La FFT est donc une fonction avec une seule entrée et une seule sortie. Elle convertit un signal temporel en sa représentation fréquentielle: 
 
 .. image:: ../_images/fft-block-diagram.svg
    :align: center
