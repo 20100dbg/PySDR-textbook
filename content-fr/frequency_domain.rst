@@ -289,8 +289,11 @@ Tout d'abord, nous devons créer un signal dans le domaine temporel.  N'hésitez
 .. code-block:: python
 
  import numpy as np
+ import matplotlib.pyplot as plt
  t = np.arange(100)
  s = np.sin(0.15*2*np.pi*t)
+ plt.plot(t,s,'.-')
+ plt.show()
 
 Si nous traçons :code:`s` cela ressemble à:
 
@@ -314,11 +317,13 @@ Conseil: indépendamment de ce que vous faites, si vous rencontrez des nombres c
 
 .. code-block:: python
 
- import matplotlib.pyplot as plt
  S_mag = np.abs(S)
  S_phase = np.angle(S)
- plt.plot(t,S_mag,'.-')
- plt.plot(t,S_phase,'.-')
+ plt.figure(0)
+ plt.plot(t, S_mag,'.-')
+ plt.figure(1)
+ plt.plot(t, S_phase,'.-')
+ plt.show()
 
 .. image:: ../_images/fft-python2.png
    :scale: 80 % 
